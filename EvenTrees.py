@@ -104,27 +104,25 @@ class SimpleTree:
         return count
 
     def EvenTrees(self):
-        
-        res = []# надо предусмотреть если корень нана или только один корень
+        res = []
         stack = []
         node = self.Root
         if node == None:
             return res
-        # for i in range(len(node.Children)):
-        #     vizit = []
-        #     vizit.append(node)
-        #     stack.insert(0, node.Children[i])
-        #     while len(stack) != 0:
-        #         for j in stack[0].Children:
-        #             stack.append(j)
-        #         vizit.insert(0, stack[0])
-        #         stack.pop(0)
-        #         if len(stack) == 0:
-        #             if len(vizit) % 2 == 1:
-        #                 res.append(node)
-        #                 res.append(node.Children[i])
+        if len(node.Children) == 0:
+            return res
 
-        # return res
-tree = SimpleTree()
-node = SimpleTreeNode(1,None)
-tree.AddChild(node)
+        for i in range(len(node.Children)):
+            vizit = []
+            vizit.append(node) #
+            stack.insert(0, node.Children[i])#
+            while len(stack) != 0:#
+                for j in stack[0].Children:#
+                    stack.append(j)#
+                vizit.insert(0, stack[0])#
+                stack.pop(0)#
+                if len(stack) == 0:#
+                    if len(vizit) % 2 == 1:#
+                        res.append(node)#
+                        res.append(node.Children[i])#
+        return res
